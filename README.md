@@ -1,6 +1,6 @@
-# Design Patterns - Template Method
+# Design Patterns - Visitor
 
-This repository showcases an implementation of the Template Method design pattern in C#. The code demonstrates how to define the skeleton of an algorithm in an abstract class while allowing subclasses to implement specific steps, creating a flexible and consistent process flow.
+This repository showcases an implementation of the Visitor design pattern in C#. The code demonstrates how to separate operations from the objects on which they operate, enabling new operations to be added without altering the classes of the elements.
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -12,47 +12,44 @@ This repository showcases an implementation of the Template Method design patter
 7. [Contact](#contact)
 
 ## Introduction
-The Template Method design pattern is a behavioral pattern that defines the skeleton of an algorithm in an abstract class, deferring some steps to subclasses. This pattern promotes code reusability by allowing subclasses to customize certain parts of the algorithm without altering its structure.
+The Visitor design pattern is a behavioral pattern that lets you separate algorithms from the objects on which they operate. This pattern allows new operations to be added to existing object structures without modifying those structures, promoting the open/closed principle and enhancing code maintainability.
 
 ## Implementation Overview
-This repository provides a C# implementation of the Template Method pattern. Key components of the code include:
+This repository provides a C# implementation of the Visitor pattern. Key components of the code include:
 
-- **AlgorithmTemplate Class**: An abstract class that defines the template method `ExecuteAlgorithm()` with abstract and concrete steps.
-- **ConcreteAlgorithmA Class**: A subclass that provides specific implementations for `StepOne()` and `StepTwo()`.
-- **ConcreteAlgorithmB Class**: A subclass that overrides `StepOne()` and `StepTwo()`, and customizes `StepThree()`.
-- **Program Class**: Demonstrates how to execute the algorithm and shows the flexibility of the Template Method pattern.
+- **IVisitor Interface**: Defines operations that can be performed on the elements.
+- **IElement Interface**: Represents an element that can accept a visitor.
+- **ConcreteElementA and ConcreteElementB Classes**: Implement the `IElement` interface and provide specific operations.
+- **ConcreteVisitor Class**: Implements the `IVisitor` interface and defines operations for `ConcreteElementA` and `ConcreteElementB`.
+- **Program Class**: Demonstrates how to use the pattern by creating elements and accepting the visitor.
 
 ## Installation
 To get started with this project, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/MansourJouya/DesignPattern-TemplateMethod.git
+git clone https://github.com/MansourJouya/DesignPattern-Visitor.git
 ```
 
 Navigate into the project directory:
 
 ```bash
-cd DesignPattern-TemplateMethod
+cd DesignPattern-Visitor
 ```
 
 Open the solution in Visual Studio or your preferred C# development environment to explore the implementation.
 
 ## Usage
 1. Open the solution file (.sln) in your C# development environment.
-2. Run the `Program` class to see the Template Method pattern in action.
-3. Modify or extend the `AlgorithmTemplate`, `ConcreteAlgorithmA`, or `ConcreteAlgorithmB` classes to experiment with different algorithm structures.
+2. Run the `Program` class to see the Visitor pattern in action.
+3. Modify or extend the `ConcreteVisitor` or `ConcreteElement` classes to experiment with different visit operations.
 
 ### Example Output:
 ```
-Executing ConcreteAlgorithmA:
-ConcreteAlgorithmA - Step One: Initializing resources.
-ConcreteAlgorithmA - Step Two: Processing data.
-Executing Step Three: Common step for all algorithms.
-
-Executing ConcreteAlgorithmB:
-ConcreteAlgorithmB - Step One: Loading configuration.
-ConcreteAlgorithmB - Step Two: Executing logic.
-ConcreteAlgorithmB - Step Three: Finalizing with custom logic.
+Visiting elements:
+ConcreteVisitor: Visiting ConcreteElementA.
+ConcreteElementA: OperationA() executed.
+ConcreteVisitor: Visiting ConcreteElementB.
+ConcreteElementB: OperationB() executed.
 ```
 
 ## Contributing
